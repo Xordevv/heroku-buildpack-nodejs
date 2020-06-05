@@ -179,13 +179,14 @@ npm_rebuild() {
   if [ -e "$build_dir/package.json" ]; then
     cd "$build_dir" || return
     echo "Rebuilding any native modules"
-    npm rebuild 2>&1
+    #npm rebuild 2>&1
     if [ -e "$build_dir/npm-shrinkwrap.json" ]; then
       echo "Installing any new modules (package.json + shrinkwrap)"
     else
       echo "Installing any new modules (package.json)"
     fi
-    monitor "npm-rebuild" npm install --production="$production" --unsafe-perm --userconfig "$build_dir/.npmrc" 2>&1
+    #monitor "npm-rebuild" npm install --production="$production" --unsafe-perm --userconfig "$build_dir/.npmrc" 2>&1
+    echo "Skipping"
   else
     echo "Skipping (no package.json)"
   fi
